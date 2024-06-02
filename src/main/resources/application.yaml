@@ -1,0 +1,14 @@
+spring:
+  main:
+    banner-mode: "off"
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    host: localhost
+    url: jdbc:postgresql://${spring.datasource.host}:5432/test-db
+    username: test
+    password: test@123
+  jpa:
+    show-sql: false
+  liquibase:
+    enabled: true
+    change-log: db/changelog/db.changelog-main.yaml
