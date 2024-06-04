@@ -209,6 +209,27 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Block Call",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/block/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"block",
+						"3"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

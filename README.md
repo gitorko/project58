@@ -13,6 +13,12 @@ $java --version
 openjdk 21
 ```
 
+Check apache benchmark
+```bash
+$ ab -V
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+```
+
 ### Postgres DB
 
 ```
@@ -33,4 +39,8 @@ To build the code.
 
 ```bash
 ./gradlew clean build
+```
+
+```bash
+ab -n 10 -c 2 http://localhost:8080/customer/block/3
 ```

@@ -8,8 +8,10 @@ import com.demo.project58.pojo.Customer;
 import com.demo.project58.repository.CustomerRepository;
 import com.demo.project58.service.DataService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,14 +21,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClient;
 
 @RestController
 @RequestMapping("/customer")
 @RequiredArgsConstructor
+@Slf4j
 public class HomeController {
 
     final CustomerRepository customerRepository;
     final DataService dataService;
+    final RestClient restClient;
 
     @PostMapping("/save")
     public Customer saveCustomer(@RequestBody Customer customer) {
@@ -66,5 +71,16 @@ public class HomeController {
     @GetMapping("/search")
     public List<Customer> search(Customer customer) {
         return dataService.search(customer);
+    }
+
+    @GetMapping("/block/{seconds}")
+    public String block(@PathVariable Integer seconds) {
+        ResponseEntity<Void> result = restClient.get()
+                .uri("/delay/" + seconds)
+                .retrieve()
+                .toBodilessEntity();
+
+        log.info("{} on {}", result.getStatusCode(), Thread.currentThread());
+        return Thread.currentThread().toString();
     }
 }
