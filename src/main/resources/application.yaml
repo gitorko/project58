@@ -2,6 +2,13 @@ spring:
   threads:
     virtual:
       enabled: true
+  task:
+    execution:
+      simple:
+        concurrency-limit: 10
+    scheduling:
+      simple:
+        concurrency-limit: 10
   main:
     banner-mode: "off"
   datasource:
