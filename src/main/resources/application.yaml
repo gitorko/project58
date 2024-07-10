@@ -22,3 +22,6 @@ spring:
   liquibase:
     enabled: true
     change-log: db/changelog/db.changelog-main.yaml
+logging:
+  level:
+    org.springframework.data.jpa: DEBUG
