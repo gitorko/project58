@@ -6,6 +6,8 @@ import java.util.UUID;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -38,6 +40,7 @@ public class Customer {
     @Column(columnDefinition = "jsonb")
     @ColumnTransformer(write = "?::jsonb")
     public String metadata;
+    @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
 
     @CreatedDate

@@ -1,6 +1,7 @@
 package com.demo.project58;
 
 import com.demo.project58.pojo.Customer;
+import com.demo.project58.pojo.PaymentType;
 import com.demo.project58.service.CustomerService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +23,7 @@ public class Main {
             customerService.save(Customer.builder()
                     .name("jack")
                     .age(50)
+                    .paymentType(PaymentType.ANNUAL)
                     .build());
         };
     }
