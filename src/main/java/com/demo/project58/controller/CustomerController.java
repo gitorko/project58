@@ -26,10 +26,15 @@ import org.springframework.web.client.RestClient;
 @RequestMapping("/customer")
 @RequiredArgsConstructor
 @Slf4j
-public class HomeController {
+public class CustomerController {
 
     final CustomerService customerService;
     final RestClient restClient;
+
+    @GetMapping("/greet/{name}")
+    public String greet(@PathVariable String name) {
+        return customerService.greet(name);
+    }
 
     @PostMapping("/save")
     @Transactional

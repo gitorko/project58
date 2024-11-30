@@ -1,6 +1,6 @@
 # Project 58
 
-Spring Virtual Threads
+Spring Virtual Threads & Unit Testing
 
 [https://gitorko.github.io/spring-virtual-threads/](https://gitorko.github.io/spring-virtual-threads/)
 

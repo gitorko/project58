@@ -48,4 +48,8 @@ public class CustomerService {
     public Page<Customer> findAll(PageRequest pageRequest) {
         return customerRepository.findAll(pageRequest);
     }
+
+    public String greet(String name) {
+        return "Hello " + name;
+    }
 }

@@ -37,3 +37,7 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+configurations.all {
+    exclude group: 'org.junit', module: 'junit'
+}

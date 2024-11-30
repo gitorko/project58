@@ -1,11 +1,11 @@
-package com.demo.project58;
+package com.demo.project58.base;
 
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 
-public abstract class BaseTest {
+public abstract class BaseConfig {
     @Container
     static PostgreSQLContainer postgresqlContainer = (PostgreSQLContainer) new PostgreSQLContainer("postgres:14")
             .withDatabaseName("test-db")
