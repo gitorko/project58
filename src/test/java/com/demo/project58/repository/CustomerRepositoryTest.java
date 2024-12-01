@@ -5,18 +5,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.UUID;
 
-import com.demo.project58.base.BaseConfig;
+import com.demo.project58.config.TestContainerConfiguration;
 import com.demo.project58.pojo.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.testcontainers.junit.jupiter.Testcontainers;
+import org.springframework.context.annotation.Import;
 
 @DataJpaTest
-@Testcontainers
+@Import(TestContainerConfiguration.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class CustomerRepositoryTest extends BaseConfig {
+public class CustomerRepositoryTest {
 
     @Autowired
     CustomerRepository customerRepository;
