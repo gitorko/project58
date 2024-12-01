@@ -13,12 +13,12 @@ import com.demo.project58.repository.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest
 class CustomerServiceTest {
 
-    @MockBean
+    @MockitoBean
     CustomerRepository customerRepository;
 
     @Test
@@ -44,7 +44,6 @@ class CustomerServiceTest {
 
     @Test
     void test_findAll() {
-
         List<Customer> customers = new ArrayList<>();
         customers.add(new Customer(UUID.randomUUID(), "Jack", 40));
         customers.add(new Customer(UUID.randomUUID(), "Joe", 30));

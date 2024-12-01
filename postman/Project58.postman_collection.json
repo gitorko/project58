@@ -1,11 +1,31 @@
 {
 	"info": {
-		"_postman_id": "f2218483-35f6-4ab0-81b9-f9886c323f60",
+		"_postman_id": "1b7cd3ee-928d-48a5-bd00-6529cb5bae13",
 		"name": "Project58",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "4185850"
 	},
 	"item": [
+		{
+			"name": "Greet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/greet/jack",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"greet",
+						"jack"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Save Customer",
 			"request": {
@@ -13,7 +33,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"roger\",\n    \"age\": 32,\n    \"metadata\" : \"{\\\"city\\\": \\\"bangalore\\\"}\",\n    \"paymentType\" : \"ANNUAL\"\n}",
+					"raw": "{\n    \"name\": \"roger\",\n    \"age\": 32\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -82,7 +102,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"ea3908f6-48b6-43b4-9f99-0bb7e3bf6393\",\n    \"name\": \"roger\",\n    \"age\": 33,\n    \"metadata\" : \"{\\\"city\\\": \\\"bangalore\\\"}\",\n    \"paymentType\" : \"ANNUAL\"\n}",
+					"raw": "{\n    \"id\": \"ea3908f6-48b6-43b4-9f99-0bb7e3bf6393\",\n    \"name\": \"roger\",\n    \"age\": 33,\n}",
 					"options": {
 						"raw": {
 							"language": "json"
