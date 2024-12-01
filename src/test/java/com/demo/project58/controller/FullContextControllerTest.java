@@ -6,7 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.UUID;
 
-import com.demo.project58.base.TestContainerConfig;
+import com.demo.project58.config.TestContainerConfig;
 import com.demo.project58.pojo.Customer;
 import com.demo.project58.service.CustomerService;
 import com.fasterxml.jackson.databind.ObjectMapper;

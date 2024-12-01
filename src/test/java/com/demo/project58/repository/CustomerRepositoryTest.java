@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.UUID;
 
-import com.demo.project58.base.TestContainerConfig;
+import com.demo.project58.config.TestContainerConfig;
 import com.demo.project58.pojo.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
