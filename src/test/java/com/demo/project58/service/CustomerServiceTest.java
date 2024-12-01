@@ -12,14 +12,24 @@ import com.demo.project58.pojo.Customer;
 import com.demo.project58.repository.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.web.client.RestClient;
 
-@SpringBootTest
+@WebMvcTest
+@Import(CustomerService.class)
 class CustomerServiceTest {
+
+    @Autowired
+    CustomerService customerService;
 
     @MockitoBean
     CustomerRepository customerRepository;
+
+    @MockitoBean
+    private RestClient restClient;
 
     @Test
     void test_save() {
@@ -33,7 +43,7 @@ class CustomerServiceTest {
         Mockito.when(customerRepository.save(any(Customer.class))).thenReturn(customer);
 
         // Act
-        Customer savedCustomer = customerRepository.save(customer);
+        Customer savedCustomer = customerService.save(customer);
 
         // Assert
         Mockito.verify(customerRepository, Mockito.times(1)).save(any(Customer.class));
@@ -49,8 +59,10 @@ class CustomerServiceTest {
         customers.add(new Customer(UUID.randomUUID(), "Joe", 30));
         Mockito.when(customerRepository.findAll()).thenReturn(customers);
 
+        List<Customer> resultCustomers = customerService.findAll();
+
         //assertj validation
-        assertThat(customers).hasSize(2)
+        assertThat(resultCustomers).hasSize(2)
                 .filteredOn(c -> c.getAge() >= 40)
                 .hasSize(1)
                 .extracting(Customer::getName)
