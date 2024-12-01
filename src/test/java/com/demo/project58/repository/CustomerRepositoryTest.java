@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.UUID;
 
-import com.demo.project58.base.BaseConfig;
+import com.demo.project58.base.TestContainerConfig;
 import com.demo.project58.pojo.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @DataJpaTest
 @Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class CustomerRepositoryTest extends BaseConfig {
+public class CustomerRepositoryTest extends TestContainerConfig {
 
     @Autowired
     CustomerRepository customerRepository;
