@@ -1,4 +1,4 @@
-package com.demo.project58.base;
+package com.demo.project58.config;
 
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
