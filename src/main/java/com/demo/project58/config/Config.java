@@ -6,7 +6,7 @@ import org.springframework.web.client.RestClient;
 
 @Configuration
 public class Config {
-    final String baseURI = "https://httpbin.org/";
+    static final String baseURI = "https://httpbin.org/";
 
     @Bean
     RestClient restClient() {

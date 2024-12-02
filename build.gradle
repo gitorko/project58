@@ -3,6 +3,8 @@ plugins {
     id 'org.springframework.boot' version '3.4.0'
     id 'io.spring.dependency-management' version '1.1.5'
     id 'jacoco'
+    id 'checkstyle'
+    id 'com.github.spotbugs' version '6.0.26'
 }
 
 group = 'com.demo'
@@ -34,6 +36,10 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:postgresql'
+    // Add this to ensure compatibility with Java 21 (ASM is required for bytecode analysis)
+//    spotbugs 'com.github.spotbugs:spotbugs:4.8.6'
+//    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.12.0'
+//    spotbugsPlugins 'org.ow2.asm:asm:9.6' // Ensure compatibility with Java 21 bytecode
 }
 
 tasks.named('test') {
@@ -87,5 +93,45 @@ tasks.jacocoTestCoverageVerification {
 }
 
 check {
-    dependsOn jacocoTestCoverageVerification
+    dependsOn 'checkstyleMain', 'checkstyleTest', 'spotbugsMain', 'spotbugsTest', 'jacocoTestCoverageVerification'
+}
+
+checkstyle {
+    toolVersion = '10.12.0'
+    // Path to Checkstyle config file
+    configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+}
+
+tasks.checkstyleMain {
+    reports {
+        xml.required.set(false) // Disable XML report
+        html.required.set(true) // Enable HTML report
+    }
+}
+
+tasks.checkstyleTest {
+    reports {
+        xml.required.set(false)
+        html.required.set(true)
+    }
+}
+
+spotbugs {
+    toolVersion = '4.8.6'
+}
+
+tasks.spotbugsMain {
+    ignoreFailures = false
+    reports {
+        xml.required.set(false) // Disable XML report
+        html.required.set(true) // Enable HTML report
+    }
+}
+
+tasks.spotbugsTest {
+    ignoreFailures = false
+    reports {
+        xml.required.set(false)
+        html.required.set(true)
+    }
 }

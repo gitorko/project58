@@ -5,8 +5,8 @@ import java.util.UUID;
 
 import com.demo.project58.pojo.Customer;
 import com.demo.project58.service.CustomerService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +24,14 @@ import org.springframework.web.client.RestClient;
 
 @RestController
 @RequestMapping("/customer")
-@RequiredArgsConstructor
 @Slf4j
 public class CustomerController {
 
-    final CustomerService customerService;
-    final RestClient restClient;
+    @Autowired
+    private CustomerService customerService;
+
+    @Autowired
+    private RestClient restClient;
 
     @GetMapping("/greet/{name}")
     public String greet(@PathVariable String name) {

@@ -22,9 +22,9 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    public UUID id;
-    public String name;
-    public Integer age;
+    private UUID id;
+    private String name;
+    private Integer age;
 
     public Customer(String name, Integer age) {
         this.name = name;
