@@ -36,10 +36,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:postgresql'
-    // Add this to ensure compatibility with Java 21 (ASM is required for bytecode analysis)
-//    spotbugs 'com.github.spotbugs:spotbugs:4.8.6'
-//    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.12.0'
-//    spotbugsPlugins 'org.ow2.asm:asm:9.6' // Ensure compatibility with Java 21 bytecode
 }
 
 tasks.named('test') {
