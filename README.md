@@ -2,6 +2,8 @@
 
 Spring Virtual Threads & Unit Testing
 
+Checkstyle, SpotBugs, JaCoCo code coverage
+
 [https://gitorko.github.io/spring-virtual-threads/](https://gitorko.github.io/spring-virtual-threads/)
 
 ### Version
