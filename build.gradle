@@ -5,6 +5,7 @@ plugins {
     id 'jacoco'
     id 'checkstyle'
     id 'com.github.spotbugs' version '6.0.26'
+    id "org.owasp.dependencycheck" version "8.4.0"
 }
 
 group = 'com.demo'
@@ -129,5 +130,27 @@ tasks.spotbugsTest {
     reports {
         xml.required.set(false)
         html.required.set(true)
+    }
+}
+
+dependencyCheck {
+    failBuildOnCVSS = 7.0
+    formats = ['HTML', 'JSON']
+    // Use the layout API to configure output directory
+    outputDirectory = layout.buildDirectory.dir("reports/dependency-check").get().asFile.absolutePath
+}
+
+// Ensure dependency check is not part of the default build lifecycle
+tasks.named("dependencyCheckAnalyze").configure {
+    enabled = false
+}
+
+// Define a separate task to run dependency check manually
+tasks.register("runDependencyCheck") {
+    dependsOn "dependencyCheckAnalyze"
+    group = "verification"
+    description = "Runs the OWASP Dependency Check"
+    doLast {
+        println "Dependency Check completed. Check the reports for details."
     }
 }
