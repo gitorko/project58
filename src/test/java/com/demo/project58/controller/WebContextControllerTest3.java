@@ -1,11 +1,8 @@
 package com.demo.project58.controller;
 
-import static org.mockito.Mockito.when;
-
 import com.demo.project58.repository.CustomerRepository;
 import com.demo.project58.service.CustomerService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
